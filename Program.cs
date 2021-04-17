@@ -41,10 +41,10 @@ namespace BlackJackCS
             var numberOfCards = deck.Count;
             for (var end = numberOfCards - 1; end >= 0; end--)
             {
-                var somePlace = new Random().Next(0, end);
-                var copiedCard = deck[end];
-                deck[end] = deck[somePlace];
-                deck[somePlace] = copiedCard;
+                var somePlace = new Random().Next(0, end); // this line picks a random card from deck between 0 and end of deck
+                var copiedCard = deck[end]; // copy the card at the end of the deck
+                deck[end] = deck[somePlace]; // replace card at end of the deck with the random card
+                deck[somePlace] = copiedCard; // change the card at the end of the deck to the random card
             }
 
             // need to create a list for player and list for house to store all of their cards as the may hit to add
