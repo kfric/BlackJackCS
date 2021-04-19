@@ -3,8 +3,31 @@ using System.Collections.Generic;
 
 namespace BlackJackCS
 {
+    class Card
+    {
+        public string Rank;
+        public string Suit;
+        public int Value()
+
+        {
+            if (Rank == "Ace") // if the card has "Ace" in it...
+            {
+                return 11; // return it as the value 11
+            }
+            else if (Rank == "Jack" || Rank == "Queen" || Rank == "King") // of the card has a Jack, Queen, King in it...
+            {
+                return 10; // return it as the value 10
+            }
+            else
+            {
+                return int.Parse(Rank); // everything else, try to return it as it's numerical value ex. "Two" =  2
+            }
+        }
+
+    }
     class Program
     {
+        
         static void Main(string[] args)
         {
             //greeting to show that the program is running
@@ -41,7 +64,7 @@ namespace BlackJackCS
             var numberOfCards = deck.Count;
             for (var end = numberOfCards - 1; end >= 0; end--)
             {
-                var somePlace = new Random().Next(0, end); // this line picks a random card from deck between 0 and end of deck
+                var somePlace = new Random().Next(0, end); // assigning somePlace to a random stop in the deck
                 var copiedCard = deck[end]; // copy the card at the end of the deck
                 deck[end] = deck[somePlace]; // replace card at end of the deck with the random card
                 deck[somePlace] = copiedCard; // change the card at the end of the deck to the random card
@@ -60,8 +83,11 @@ namespace BlackJackCS
             // remove those cards from the deck
             deck.RemoveAt(0);
             deck.RemoveAt(1);
+
             Console.WriteLine($"You were dealt a {playerCards}");
 
+            // ?????-----I thought .Value() would pull the value of the deck[0] and deck[1]-----?????
+            // Console.WriteLine($"You were dealt a {playerCards}{playerCards.Value()");
 
 
             // need to deal 2 cards to the house, but will NOT be displayed
@@ -70,11 +96,10 @@ namespace BlackJackCS
             deck.RemoveAt(0);
             deck.RemoveAt(1);
 
-            // need to create if statement to determine is hand is > 21
-
 
             // need to ask the player if they want to hit or stand
-            Console.WriteLine("Do you want to HIT?");
+            Console.WriteLine("");
+            Console.WriteLine("----Do you want to HIT?----");
             var hitAnswer = Console.ReadLine();
             if (hitAnswer == "y" || hitAnswer == "Y" || hitAnswer == "YES" || hitAnswer == "yes" || hitAnswer == "Yes")
             {
@@ -86,25 +111,9 @@ namespace BlackJackCS
             playerHand.Add($"{deck[0]}");
             // need to remove that card from the deck
             deck.RemoveAt(0);
+            
             Console.WriteLine($"{playerFirstHand}");
 
-
-
-            // need to determine if house will hit or stand
-            // is the houses hand equal to or more than 17?
-            // is the houses hand equal to or less than 16?
-
-
-
-
-
-
-
-            // // if the player does not choose to start the game
-            // if (hitAnswer != "y" || hitAnswer != "Y" || hitAnswer != "Hit" || hitAnswer != "hit" || hitAnswer != "HIT")
-            // {
-            //     Console.WriteLine("----GAME OVER----");
-            // }
 
 
 
