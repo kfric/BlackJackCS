@@ -40,52 +40,28 @@ namespace BlackJackCS
         // The Value of the card according to the table in the "P"roblem part
         public int Value() // Needs to return the value of the cards as an int
         {
-            var theCardValue = 0;
 
             switch (Rank)
             {
                 case "2":
-                    theCardValue = 2;
-                    break;
                 case "3":
-                    theCardValue = 3;
-                    break;
                 case "4":
-                    theCardValue = 4;
-                    break;
                 case "5":
-                    theCardValue = 5;
-                    break;
                 case "6":
-                    theCardValue = 6;
-                    break;
                 case "7":
-                    theCardValue = 7;
-                    break;
                 case "8":
-                    theCardValue = 8;
-                    break;
                 case "9":
-                    theCardValue = 9;
-                    break;
                 case "10":
-                    theCardValue = 10;
-                    break;
+                    return int.Parse(Rank);
                 case "Jack":
-                    theCardValue = 10;
-                    break;
                 case "Queen":
-                    theCardValue = 10;
-                    break;
                 case "King":
-                    theCardValue = 10;
-                    break;
+                    return 10;
                 case "Ace":
-                    theCardValue = 11;
-                    break;
+                    return 11;
+                default: // in case input is not a defined card?
+                    return 0;
             }
-
-            return theCardValue;
         }
         // Make new behavior that can describe a card (and it's two objects)
         // Name
