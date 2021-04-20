@@ -8,8 +8,6 @@ namespace BlackJackCS
         // Properties: A list of individual Cards
         public List<Card> IndividualCards { get; set; } = new List<Card>();
 
-        // Behaviors:
-        // TotalValue representing the sum of the individual Cards in the list.
 
         // Name
         // Input
@@ -20,6 +18,15 @@ namespace BlackJackCS
             // Add a card to the hand
             IndividualCards.Add(newCard);
         }
+        // Behaviors:
+        // TotalValue representing the sum of the individual Cards in the list.
+        // Input new card
+        // Output nothing
+        public int TotalValue()
+        {
+            return 0;
+        }
+
     }
     // Card
     class Card
@@ -102,23 +109,31 @@ namespace BlackJackCS
 
             // Ask the deck for a card
             newCard = deck[0]; // Override newCard
-
+            deck.Remove(newCard);
             // Place it in the player hand
             playerHand.Receive(newCard);
 
             // Ask the deck for a card 
             newCard = deck[0];
-
+            deck.Remove(newCard);
             // Place it in the dealer hand
             dealerHand.Receive(newCard);
 
             // Ask the deck for a card 
             newCard = deck[0];
-
+            deck.Remove(newCard);
             // Place it in the dealer hand
             dealerHand.Receive(newCard);
 
-            // Show the player the cards in their hand and the TotalValue of their Hand
+            // Show the player the cards in their hand
+            Console.WriteLine("Your cards are: ");
+            foreach (var card in playerHand.IndividualCards)
+            {
+                Console.WriteLine(card.Description());
+            }
+            // Display the TotalValue of their Hand
+            Console.WriteLine("You have:");
+            Console.WriteLine(playerHand.TotalValue());
 
             // If they have BUSTED, then goto step 15
 
