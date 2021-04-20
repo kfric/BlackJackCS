@@ -6,11 +6,16 @@ namespace BlackJackCS
     class Hand
     {
         // Properties: A list of individual Cards
-
+        public List<Card> IndividualCards { get; set; } = new List<Card>();
 
         // Behaviors:
         // TotalValue representing the sum of the individual Cards in the list.
-        // Add a card to the hand
+
+        public void Add(Card newCard)
+        {
+            // Add a card to the hand
+            IndividualCards.Add(newCard);
+        }
     }
     // Card
     class Card
@@ -84,7 +89,18 @@ namespace BlackJackCS
             // Create a dealer hand
             var dealerHand = new Hand();
 
-            // Ask the deck for a card and place it in the player hand
+            // Ask the deck for a card
+            var newCard = deck[0];
+            deck.Remove(newCard); // remove that card from the deck so
+
+            // place it in the player hand
+            playerHand.Add(newCard);
+
+            var playerHandCards = playerHand.IndividualCards;
+            foreach (var card in playerHandCards)
+            {
+                Console.WriteLine(card.Description());
+            }
 
 
             // Ask the deck for a card and place it in the player hand
