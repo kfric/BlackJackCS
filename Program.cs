@@ -185,16 +185,39 @@ namespace BlackJackCS
                         playerHand.Receive(hitCard);
                     }
                 }
+                Console.WriteLine("Your cards are: ");
+                foreach (var card in playerHand.IndividualCards)
+                {
+                    Console.WriteLine(card.Description());
+                }
+                Console.Write("You have: ");
+                Console.WriteLine(playerHand.TotalValue());
+
 
 
                 // If the dealer has busted then goto step 17
+                // If the dealer has less than 17
+                while (dealerHand.TotalValue() < 17)
+                {
+                    var newDealerCard = deck[0];
+                    deck.Remove(newDealerCard);
+
+                    // Add a card to the dealer hand and go back to 14
+                    dealerHand.Receive(newDealerCard);
+                }
 
             }
-
-            // If the dealer has less than 17
-
-            // Add a card to the dealer hand and go back to 14
+            // Display dealer cards once 17 is reach
+            Console.WriteLine("The Dealer cards are: ");
+            foreach (var card in dealerHand.IndividualCards)
+            {
+                Console.WriteLine(card.Description());
+            }
+            Console.Write("They have: ");
             // Show the dealer's hand TotalValue
+            Console.WriteLine(dealerHand.TotalValue());
+
+
 
             // If the player busted show "DEALER WINS"
 
