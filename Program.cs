@@ -10,9 +10,9 @@ namespace BlackJackCS
 
 
         // Name
-        // Input
-        // Work
-        // Output
+        // Input - new card
+        // Work - receive new card and add to IndividualCards
+        // Output - nothing
         public void Receive(Card newCard)
         {
             // Add a card to the hand
@@ -38,14 +38,63 @@ namespace BlackJackCS
 
         // Behaviors:
         // The Value of the card according to the table in the "P"roblem part
-        public int Value() // needs to return the value of the cards as an int
+        public int Value() // Needs to return the value of the cards as an int
         {
-            return 0; // return as 0 until we figure out how to add values. only need the rank and suit rn
+            var theCardValue = 0;
+
+            switch (Rank)
+            {
+                case "2":
+                    theCardValue = 2;
+                    break;
+                case "3":
+                    theCardValue = 3;
+                    break;
+                case "4":
+                    theCardValue = 4;
+                    break;
+                case "5":
+                    theCardValue = 5;
+                    break;
+                case "6":
+                    theCardValue = 6;
+                    break;
+                case "7":
+                    theCardValue = 7;
+                    break;
+                case "8":
+                    theCardValue = 8;
+                    break;
+                case "9":
+                    theCardValue = 9;
+                    break;
+                case "10":
+                    theCardValue = 10;
+                    break;
+                case "Jack":
+                    theCardValue = 10;
+                    break;
+                case "Queen":
+                    theCardValue = 10;
+                    break;
+                case "King":
+                    theCardValue = 10;
+                    break;
+                case "Ace":
+                    theCardValue = 11;
+                    break;
+            }
+
+            return theCardValue;
         }
-        // make new behavior that can describe a card (and it's two objects)
+        // Make new behavior that can describe a card (and it's two objects)
+        // Name
+        // Input - none
+        // Work - Generate new string that describes card
+        // Output - string
         public string Description()
         {
-            var newDescriptionString = $"The {Rank} of {Suit}"; // assign the rank and suit to an object
+            var newDescriptionString = $"The {Rank} of {Suit} - worth {Value()} points."; // assign the rank and suit to an object
 
             return newDescriptionString; // return it so that it can be accessed
         }
@@ -125,15 +174,12 @@ namespace BlackJackCS
             // Place it in the dealer hand
             dealerHand.Receive(newCard);
 
-            // Show the player the cards in their hand
+            // Show the player the cards in their hand and display the TotalValue of their Hand
             Console.WriteLine("Your cards are: ");
             foreach (var card in playerHand.IndividualCards)
             {
                 Console.WriteLine(card.Description());
             }
-            // Display the TotalValue of their Hand
-            Console.WriteLine("You have:");
-            Console.WriteLine(playerHand.TotalValue());
 
             // If they have BUSTED, then goto step 15
 
