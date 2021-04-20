@@ -24,7 +24,12 @@ namespace BlackJackCS
         // Output nothing
         public int TotalValue()
         {
-            return 0;
+            var total = 0;
+            foreach (var card in IndividualCards) // For each individual card in IndividualCards list..
+            {
+                total = card.Value() + total; // The total of the hand = current card value + the total
+            }
+            return total;
         }
 
     }
@@ -43,7 +48,7 @@ namespace BlackJackCS
 
             switch (Rank)
             {
-                case "2":
+                case "2": // switch the rank of 2 with it's int
                 case "3":
                 case "4":
                 case "5":
@@ -52,7 +57,7 @@ namespace BlackJackCS
                 case "8":
                 case "9":
                 case "10":
-                    return int.Parse(Rank);
+                    return int.Parse(Rank); // return it's assigned int
                 case "Jack":
                 case "Queen":
                 case "King":
@@ -156,6 +161,8 @@ namespace BlackJackCS
             {
                 Console.WriteLine(card.Description());
             }
+            Console.Write("You have: ");
+            Console.WriteLine(playerHand.TotalValue());
 
             // If they have BUSTED, then goto step 15
 
