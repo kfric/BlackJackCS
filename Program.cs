@@ -260,14 +260,7 @@ namespace BlackJackCS
                 Console.WriteLine("Want to play again? Y/N");
                 var answer = Console.ReadLine().ToLower();
 
-                if (answer == "y")
-                {
-                    keepPlaying = true;
-                }
-                else
-                {
-                    keepPlaying = false;
-                }
+                keepPlaying = (answer == "y");
             }
         }
 
