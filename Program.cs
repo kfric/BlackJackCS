@@ -84,6 +84,10 @@ namespace BlackJackCS
     {
         public void Play()
         {
+            // Displays a greeting
+            Console.WriteLine("*****************");
+            Console.WriteLine("----BLACKJACK----");
+            Console.WriteLine("*****************");
             // Create a new deck 
             // A list of 52 cards
             // Algorithm for making a list of 52 cards
@@ -163,16 +167,20 @@ namespace BlackJackCS
                 while (choice != "s" && playerHand.TotalValue() <= 21) // if the choice is not "s" and the total hand value is less than or equal to 21 cont..
                 {
                     // Show the player the cards in their hand and display the TotalValue of their Hand
-                    Console.WriteLine("Your cards are: ");
+                    Console.WriteLine("You were dealt a: ");
                     foreach (var card in playerHand.IndividualCards)
                     {
                         Console.WriteLine(card.Description());
                     }
                     Console.Write("You have: ");
                     Console.WriteLine(playerHand.TotalValue());
+
+                    Console.WriteLine("----------------------------------");
                     // Ask the player if they want to HIT or STAND
                     Console.WriteLine("Do you want to Hit or Stand? [H/S]");
+                    Console.WriteLine("----------------------------------");
                     choice = Console.ReadLine().ToLower();
+
 
                     // If HIT
                     if (choice == "h") // If the choice is "h" cont..
@@ -184,6 +192,7 @@ namespace BlackJackCS
                         playerHand.Receive(hitCard);
                     }
                 }
+                Console.WriteLine("----------------------------------");
                 Console.WriteLine("Your cards are: ");
                 foreach (var card in playerHand.IndividualCards)
                 {
@@ -191,6 +200,7 @@ namespace BlackJackCS
                 }
                 Console.Write("You have: ");
                 Console.WriteLine(playerHand.TotalValue());
+                Console.WriteLine("----------------------------------");
 
 
 
@@ -207,7 +217,7 @@ namespace BlackJackCS
 
             }
             // Display dealer cards once 17 is reach
-            Console.WriteLine("The Dealer cards are: ");
+            Console.WriteLine("The Dealers cards are: ");
             foreach (var card in dealerHand.IndividualCards)
             {
                 Console.WriteLine(card.Description());
@@ -215,6 +225,7 @@ namespace BlackJackCS
             Console.Write("They have: ");
             // Show the dealer's hand TotalValue
             Console.WriteLine(dealerHand.TotalValue());
+            Console.WriteLine("----------------------------------");
 
             // If the player busted show "DEALER WINS"
             if (playerHand.TotalValue() > 21)
@@ -241,6 +252,7 @@ namespace BlackJackCS
                 // If the value of the hands are even, show "DEALER WINS"
                 Console.WriteLine("YOU LOSE! Ties go to the dealer");
             }
+            Console.WriteLine("----------------------------------");
 
 
         }
