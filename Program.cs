@@ -105,15 +105,18 @@ namespace BlackJackCS
 
             // Place it in the player hand
             playerHand.Receive(newCard);
-            // Ask the deck for a card and place it in the dealer hand
 
-            var playerHandCards = playerHand.IndividualCards;
-            foreach (var card in playerHandCards)
-            {
-                Console.WriteLine(card.Description());
-            }
+            // Ask the deck for a card 
+            newCard = deck[0];
 
-            // Ask the deck for a card and place it in the dealer hand
+            // Place it in the dealer hand
+            dealerHand.Receive(newCard);
+
+            // Ask the deck for a card 
+            newCard = deck[0];
+
+            // Place it in the dealer hand
+            dealerHand.Receive(newCard);
 
             // Show the player the cards in their hand and the TotalValue of their Hand
 
