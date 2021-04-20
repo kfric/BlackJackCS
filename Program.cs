@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BlackJackCS
 {
-        // Card
+    // Card
     class Card
     {
         // Properties: The Rank of the card, the Suit of the card
@@ -17,10 +17,10 @@ namespace BlackJackCS
         {
             return 0; // return as 0 until we figure out how to add values. only need the rank and suit rn
         }
-     }
+    }
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             // Create a new deck 
@@ -31,28 +31,21 @@ namespace BlackJackCS
             var deck = new List<Card>();
 
             // Suits is a list of "Club", "Diamond", "Heart", or "Spade"
-            var Suits = new List<string>(){"Clubs", "Diamonds", "Hearts", "Spades"};
+            var Suits = new List<string>() { "Clubs", "Diamonds", "Hearts", "Spades" };
 
             // Faces is a list of 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, or Ace
-            var Rank = new List<string>(){"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+            var Rank = new List<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
 
-        
-            // Go through all of the suits one at a time and in order
-            // {
-            //     Get the current suit
-            //     Go through all of the faces one a time and in order
-            //     {
-            //         Get the current face
 
-            //         With the current suit and the current face, make a new card
-            //         Add that card to the list of cards
-            //     Go to the card and loop again
-            //     }
-            // Go to the next suit and loop again
-            // }
-            // ```
             // Ask the deck to make a new shuffled 52 cards
-
+            var numberOfCards = deck.Count;
+            for (var end = numberOfCards - 1; end >= 0; end--)
+            {
+                var somePlace = new Random().Next(0, end); // picks a random card from deck between 0 and end of deck
+                var copiedCard = deck[end];
+                deck[end] = deck[somePlace];
+                deck[somePlace] = copiedCard;
+            }
             // Create a player hand
 
             // Create a dealer hand
@@ -91,6 +84,6 @@ namespace BlackJackCS
 
             // If the value of the hands are even, show "DEALER WINS"  
         }
-        
+
     }
 }
