@@ -11,7 +11,11 @@ namespace BlackJackCS
         // Behaviors:
         // TotalValue representing the sum of the individual Cards in the list.
 
-        public void Add(Card newCard)
+        // Name
+        // Input
+        // Work
+        // Output
+        public void Receive(Card newCard)
         {
             // Add a card to the hand
             IndividualCards.Add(newCard);
@@ -94,18 +98,20 @@ namespace BlackJackCS
             deck.Remove(newCard); // remove that card from the deck so
 
             // place it in the player hand
-            playerHand.Add(newCard);
+            playerHand.Receive(newCard);
+
+            // Ask the deck for a card
+            newCard = deck[0]; // Override newCard
+
+            // Place it in the player hand
+            playerHand.Receive(newCard);
+            // Ask the deck for a card and place it in the dealer hand
 
             var playerHandCards = playerHand.IndividualCards;
             foreach (var card in playerHandCards)
             {
                 Console.WriteLine(card.Description());
             }
-
-
-            // Ask the deck for a card and place it in the player hand
-
-            // Ask the deck for a card and place it in the dealer hand
 
             // Ask the deck for a card and place it in the dealer hand
 
