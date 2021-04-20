@@ -80,10 +80,9 @@ namespace BlackJackCS
             return newDescriptionString; // return it so that it can be accessed
         }
     }
-    class Program
+    class Game
     {
-
-        static void Main(string[] args)
+        public void Play()
         {
             // Create a new deck 
             // A list of 52 cards
@@ -244,6 +243,32 @@ namespace BlackJackCS
             }
 
 
+        }
+
+    }
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            var keepPlaying = true;
+            while (keepPlaying)
+            {
+                var theGame = new Game();
+                theGame.Play();
+
+                Console.WriteLine("Want to play again? Y/N");
+                var answer = Console.ReadLine().ToLower();
+
+                if (answer == "y")
+                {
+                    keepPlaying = true;
+                }
+                else
+                {
+                    keepPlaying = false;
+                }
+            }
         }
 
     }
