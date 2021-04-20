@@ -197,7 +197,7 @@ namespace BlackJackCS
 
                 // If the dealer has busted then goto step 17
                 // If the dealer has less than 17
-                while (dealerHand.TotalValue() < 17)
+                while (dealerHand.TotalValue() < 17 && playerHand.TotalValue() <= 21)
                 {
                     var newDealerCard = deck[0];
                     deck.Remove(newDealerCard);
@@ -217,15 +217,33 @@ namespace BlackJackCS
             // Show the dealer's hand TotalValue
             Console.WriteLine(dealerHand.TotalValue());
 
-
-
             // If the player busted show "DEALER WINS"
+            if (playerHand.TotalValue() > 21)
+            {
+                Console.WriteLine("BUST!, you lose");
+                // If the dealer busted show "PLAYER WINS"
+            }
+            else if (dealerHand.TotalValue() > 21)
+            {
+                Console.WriteLine("YOU WIN");
+            }
+            // If the dealer's hand is more than the player's hand then show "DEALER WINS"
+            else if (dealerHand.TotalValue() > playerHand.TotalValue())
+            {
+                Console.WriteLine("YOU LOSE!");
+            }
+            // else show "PLAYER WINS"
+            else if (playerHand.TotalValue() > dealerHand.TotalValue())
+            {
+                Console.WriteLine("YOU WIN!");
+            }
+            else
+            {
+                // If the value of the hands are even, show "DEALER WINS"
+                Console.WriteLine("YOU LOSE! Ties go to the dealer");
+            }
 
-            // If the dealer busted show "PLAYER WINS"
 
-            // If the dealer's hand is more than the player's hand then show "DEALER WINS", else show "PLAYER WINS"
-
-            // If the value of the hands are even, show "DEALER WINS"  
         }
 
     }
