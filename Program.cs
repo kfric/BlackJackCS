@@ -155,25 +155,41 @@ namespace BlackJackCS
             // Place it in the dealer hand
             dealerHand.Receive(newCard);
 
-            // Show the player the cards in their hand and display the TotalValue of their Hand
-            Console.WriteLine("Your cards are: ");
-            foreach (var card in playerHand.IndividualCards)
-            {
-                Console.WriteLine(card.Description());
-            }
-            Console.Write("You have: ");
-            Console.WriteLine(playerHand.TotalValue());
 
             // If they have BUSTED, then goto step 15
+            if (playerHand.TotalValue() <= 21)
+            {
+                var choice = "";
+                // If STAND continue on
+                while (choice != "s" && playerHand.TotalValue() <= 21) // if the choice is not "s" and the total hand value is less than or equal to 21 cont..
+                {
+                    // Show the player the cards in their hand and display the TotalValue of their Hand
+                    Console.WriteLine("Your cards are: ");
+                    foreach (var card in playerHand.IndividualCards)
+                    {
+                        Console.WriteLine(card.Description());
+                    }
+                    Console.Write("You have: ");
+                    Console.WriteLine(playerHand.TotalValue());
+                    // Ask the player if they want to HIT or STAND
+                    Console.WriteLine("Do you want to Hit or Stand? [H/S]");
+                    choice = Console.ReadLine().ToLower();
 
-            // Ask the player if they want to HIT or STAND
+                    // If HIT
+                    if (choice == "h") // If the choice is "h" cont..
+                    {
+                        // Ask the deck for a card and place it in the player hand, repeat step 10
+                        var hitCard = deck[0];
+                        deck.Remove(hitCard);
 
-            // If HIT
+                        playerHand.Receive(hitCard);
+                    }
+                }
 
-            // Ask the deck for a card and place it in the player hand, repeat step 10
-            // If STAND continue on
 
-            // If the dealer has busted then goto step 17
+                // If the dealer has busted then goto step 17
+
+            }
 
             // If the dealer has less than 17
 
