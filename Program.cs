@@ -17,6 +17,13 @@ namespace BlackJackCS
         {
             return 0; // return as 0 until we figure out how to add values. only need the rank and suit rn
         }
+        // make new behavior that can describe a card (and it's two objects)
+        public string Description()
+        {
+            var newDescriptionString = $"The {Rank} of {Suit}"; // assign the rank and suit to an object
+
+            return newDescriptionString; // return it so that it can be accessed
+        }
     }
     class Program
     {
@@ -34,17 +41,37 @@ namespace BlackJackCS
             var Suits = new List<string>() { "Clubs", "Diamonds", "Hearts", "Spades" };
 
             // Faces is a list of 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, or Ace
-            var Rank = new List<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
+            var Ranks = new List<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
+
+            // Go through each suit one at a time
+            foreach (var suit in Suits)
+            {
+                // Go through each rank at a time
+                foreach (var rank in Ranks)
+                {
+                    // Build a new card and assign it a Suit and a Rank
+                    var card = new Card { Suit = suit, Rank = rank };
+                    // add that card to the deck
+                    deck.Add(card);
+                }
+            }
+
+            foreach (var card in deck)
+            {
+                Console.WriteLine(card.Description());
+            }
 
 
             // Ask the deck to make a new shuffled 52 cards
+
+            // get the count of the number of cards in the deck
             var numberOfCards = deck.Count;
             for (var end = numberOfCards - 1; end >= 0; end--)
             {
-                var somePlace = new Random().Next(0, end); // picks a random card from deck between 0 and end of deck
-                var copiedCard = deck[end];
-                deck[end] = deck[somePlace];
-                deck[somePlace] = copiedCard;
+                var somePlace = new Random().Next(0, end); // Picks a random card from deck between 0 and end of deck
+                var copiedCard = deck[end]; // Copy the car at the end of the deck
+                deck[end] = deck[somePlace]; // replace card at end of deck with the random card
+                deck[somePlace] = copiedCard; // change the card at the end of the deck to the random card
             }
             // Create a player hand
 
