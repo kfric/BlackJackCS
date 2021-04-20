@@ -3,6 +3,15 @@ using System.Collections.Generic;
 
 namespace BlackJackCS
 {
+    class Hand
+    {
+        // Properties: A list of individual Cards
+
+
+        // Behaviors:
+        // TotalValue representing the sum of the individual Cards in the list.
+        // Add a card to the hand
+    }
     // Card
     class Card
     {
@@ -31,8 +40,8 @@ namespace BlackJackCS
         static void Main(string[] args)
         {
             // Create a new deck 
-            // PEDAC ^^^^ - Properties: A list of 52 cards
-            //  Algorithm for making a list of 52 cards
+            // A list of 52 cards
+            // Algorithm for making a list of 52 cards
 
             // Make a blank list of cards
             var deck = new List<Card>();
@@ -56,11 +65,6 @@ namespace BlackJackCS
                 }
             }
 
-            foreach (var card in deck)
-            {
-                Console.WriteLine(card.Description());
-            }
-
 
             // Ask the deck to make a new shuffled 52 cards
 
@@ -74,10 +78,14 @@ namespace BlackJackCS
                 deck[somePlace] = copiedCard; // change the card at the end of the deck to the random card
             }
             // Create a player hand
+            var playerHand = new Hand();
+
 
             // Create a dealer hand
+            var dealerHand = new Hand();
 
             // Ask the deck for a card and place it in the player hand
+
 
             // Ask the deck for a card and place it in the player hand
 
