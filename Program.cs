@@ -3,122 +3,94 @@ using System.Collections.Generic;
 
 namespace BlackJackCS
 {
+        // Card
     class Card
     {
-        public string Rank;
-        public string Suit;
-        public int Value()
+        // Properties: The Rank of the card, the Suit of the card
+        public string Rank { get; set; }
+        public string Suit { get; set; }
 
+
+        // Behaviors:
+        // The Value of the card according to the table in the "P"roblem part
+        public int Value() // needs to return the value of the cards as an int
         {
-            if (Rank == "Ace") // if the card has "Ace" in it...
-            {
-                return 11; // return it as the value 11
-            }
-            else if (Rank == "Jack" || Rank == "Queen" || Rank == "King") // of the card has a Jack, Queen, King in it...
-            {
-                return 10; // return it as the value 10
-            }
-            else
-            {
-                return int.Parse(Rank); // everything else, try to return it as it's numerical value ex. "Two" =  2
-            }
+            return 0; // return as 0 until we figure out how to add values. only need the rank and suit rn
         }
-
-    }
+     }
     class Program
     {
         
         static void Main(string[] args)
         {
-            //greeting to show that the program is running
-            Console.WriteLine("-------------------------");
-            Console.WriteLine("Ready to play Blackjack?");
-            Console.WriteLine("-------------------------");
+            // Create a new deck 
+            // PEDAC ^^^^ - Properties: A list of 52 cards
+            //  Algorithm for making a list of 52 cards
 
-            //asking to continue...
-            Console.WriteLine("Y to play");
-            var answer = Console.ReadLine();
-            if (answer == "Y" || answer == "y")
-            {
-                Console.WriteLine("----GOOD LUCK----");
-            }
+            // Make a blank list of cards
+            var deck = new List<Card>();
 
-            //create blank list, or deck to hold the cards with their 2 values
-            var deck = new List<string>();
+            // Suits is a list of "Club", "Diamond", "Heart", or "Spade"
+            var Suits = new List<string>(){"Clubs", "Diamonds", "Hearts", "Spades"};
 
-            //create 2 lists to hold a card's 2 values
-            var suits = new List<string>() { "Clubs", "Hearts", "Diamonds", "Spades" };
-            var ranks = new List<string>() { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "Jack", "Queen", "King" };
+            // Faces is a list of 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, or Ace
+            var Rank = new List<string>(){"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
 
-            // need to create loop to assign each suit with rank
-            foreach (var rank in ranks) // go through each rank
-            {
-                foreach (var suit in suits) // go through each suit for each rank
-                {
-                    var card = $"{rank} of {suit}"; // for each rank/suit combo add to a card
-                    deck.Add(card); // add each card to the list deck
-                }
-            }
+        
+            // Go through all of the suits one at a time and in order
+            // {
+            //     Get the current suit
+            //     Go through all of the faces one a time and in order
+            //     {
+            //         Get the current face
 
-            // need shuffle cards
-            var numberOfCards = deck.Count;
-            for (var end = numberOfCards - 1; end >= 0; end--)
-            {
-                var somePlace = new Random().Next(0, end); // assigning somePlace to a random stop in the deck
-                var copiedCard = deck[end]; // copy the card at the end of the deck
-                deck[end] = deck[somePlace]; // replace card at end of the deck with the random card
-                deck[somePlace] = copiedCard; // change the card at the end of the deck to the random card
-            }
+            //         With the current suit and the current face, make a new card
+            //         Add that card to the list of cards
+            //     Go to the card and loop again
+            //     }
+            // Go to the next suit and loop again
+            // }
+            // ```
+            // Ask the deck to make a new shuffled 52 cards
 
-            // need to create a list for player and list for house to store all of their cards as the may hit to add
-            var playerHand = new List<string>();
-            var houseHand = new List<string>();
+            // Create a player hand
 
-            // need to give int values to ace, jack, queen, king
+            // Create a dealer hand
 
+            // Ask the deck for a card and place it in the player hand
 
+            // Ask the deck for a card and place it in the player hand
 
-            // need to deal 2 cards to player and display
-            var playerCards = $"{deck[0]} and {deck[1]}";
-            // remove those cards from the deck
-            deck.RemoveAt(0);
-            deck.RemoveAt(1);
+            // Ask the deck for a card and place it in the dealer hand
 
-            Console.WriteLine($"You were dealt a {playerCards}");
+            // Ask the deck for a card and place it in the dealer hand
 
-            // ?????-----I thought .Value() would pull the value of the deck[0] and deck[1]-----?????
-            // Console.WriteLine($"You were dealt a {playerCards}{playerCards.Value()");
+            // Show the player the cards in their hand and the TotalValue of their Hand
 
+            // If they have BUSTED, then goto step 15
 
-            // need to deal 2 cards to the house, but will NOT be displayed
-            var houseCards = $"{deck[0]} and {deck[1]}";
-            // remove those cards from the deck
-            deck.RemoveAt(0);
-            deck.RemoveAt(1);
+            // Ask the player if they want to HIT or STAND
 
+            // If HIT
 
-            // need to ask the player if they want to hit or stand
-            Console.WriteLine("");
-            Console.WriteLine("----Do you want to HIT?----");
-            var hitAnswer = Console.ReadLine();
-            if (hitAnswer == "y" || hitAnswer == "Y" || hitAnswer == "YES" || hitAnswer == "yes" || hitAnswer == "Yes")
-            {
-                Console.WriteLine("----DEALING ANOTHER CARD----");
-            }
+            // Ask the deck for a card and place it in the player hand, repeat step 10
+            // If STAND continue on
 
-            // if player hit we need to add next card from deck to their hand
-            var playerFirstHand = ($"{playerCards} and {deck[0]}");
-            playerHand.Add($"{deck[0]}");
-            // need to remove that card from the deck
-            deck.RemoveAt(0);
-            
-            Console.WriteLine($"{playerFirstHand}");
+            // If the dealer has busted then goto step 17
 
+            // If the dealer has less than 17
 
+            // Add a card to the dealer hand and go back to 14
+            // Show the dealer's hand TotalValue
 
+            // If the player busted show "DEALER WINS"
 
+            // If the dealer busted show "PLAYER WINS"
 
+            // If the dealer's hand is more than the player's hand then show "DEALER WINS", else show "PLAYER WINS"
 
+            // If the value of the hands are even, show "DEALER WINS"  
         }
+        
     }
 }
